@@ -10,39 +10,39 @@ type Plan = {
 
 const PLANS: Plan[] = [
   {
-    id: "auto",
-    name: "Автострахование",
-    summary: "Защита автомобиля, пассажиров и ответственности.",
-    monthlyFrom: 3900,
-    features: ["ОСАГО", "КАСКО", "Полное покрытие", "Помощь на дороге"],
+    id: "consult",
+    name: "Первичная консультация",
+    summary: "Бесплатная оценка вашего случая и рекомендации.",
+    monthlyFrom: 0,
+    features: ["Анализ документов", "Оценка перспектив дела", "Правовые рекомендации", "Без обязательств"],
   },
   {
-    id: "home",
-    name: "Страхование жилья",
-    summary: "Защита дома и имущества от непредвиденных ситуаций.",
-    monthlyFrom: 2900,
-    features: ["Конструкция", "Личное имущество", "Ответственность", "Временное жилье"],
+    id: "claim",
+    name: "Досудебная претензия",
+    summary: "Подготовка и направление претензии медучреждению.",
+    monthlyFrom: 15000,
+    features: ["Сбор доказательств", "Экспертиза документов", "Составление претензии", "Переговоры с клиникой"],
   },
   {
-    id: "life",
-    name: "Страхование жизни",
-    summary: "Финансовая защита для ваших близких.",
-    monthlyFrom: 2500,
-    features: ["Срочное", "Накопительное", "Гибкие условия"],
+    id: "court",
+    name: "Судебная защита",
+    summary: "Полное представительство в суде по вашему делу.",
+    monthlyFrom: 35000,
+    features: ["Подготовка иска", "Представительство в суде", "Работа с экспертами", "Взыскание компенсации"],
   },
   {
-    id: "health",
-    name: "Медстрахование",
-    summary: "Покрытие медицинских расходов и профилактики.",
-    monthlyFrom: 5900,
-    features: ["Терапевт", "Специалисты", "Экстренная помощь", "Лекарства"],
+    id: "expert",
+    name: "Медицинская экспертиза",
+    summary: "Независимая оценка качества медицинской помощи.",
+    monthlyFrom: 20000,
+    features: ["Привлечение экспертов", "Анализ медкарты", "Заключение специалистов", "Доказательная база"],
   },
   {
-    id: "travel",
-    name: "Страхование путешествий",
-    summary: "Защита поездок при отмене и медицинских случаях.",
-    monthlyFrom: 1200,
-    features: ["Отмена поездки", "Медпомощь", "Багаж", "Поддержка 24/7"],
+    id: "support",
+    name: "Правовое сопровождение",
+    summary: "Комплексная поддержка на всех этапах дела.",
+    monthlyFrom: 50000,
+    features: ["Полный цикл работ", "От претензии до суда", "Психологическая поддержка", "Гарантия результата"],
   },
 ]
 
@@ -60,11 +60,11 @@ export function InsuranceList() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <label className="w-full md:max-w-sm">
-          <span className="sr-only">Поиск страховок</span>
+          <span className="sr-only">Поиск услуг</span>
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Поиск покрытия (напр., КАСКО, путешествия)..."
+            placeholder="Поиск услуги (напр., консультация, суд)..."
             className="w-full rounded-md border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary"
           />
         </label>
@@ -84,7 +84,11 @@ export function InsuranceList() {
             </ul>
             <div className="mt-auto pt-4">
               <p className="text-sm">
-                От <span className="text-foreground">{plan.monthlyFrom.toLocaleString('ru-RU')}&nbsp;&#8381;/мес</span>
+                {plan.monthlyFrom === 0 ? (
+                  <span className="text-foreground font-medium">Бесплатно</span>
+                ) : (
+                  <>От <span className="text-foreground">{plan.monthlyFrom.toLocaleString('ru-RU')}&nbsp;&#8381;</span></>
+                )}
               </p>
             </div>
           </article>

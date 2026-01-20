@@ -6,11 +6,11 @@ export function SiteHeader() {
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
         <Link to="/" className="inline-flex items-center gap-2">
           <div className="h-6 w-6 rounded-md bg-primary/15 ring-1 ring-primary/30" aria-hidden="true" />
-          <span className="font-serif text-lg font-semibold tracking-tight">ЧистыйЩит</span>
+          <span className="font-serif text-lg font-semibold tracking-tight">ПравоЗащита</span>
         </Link>
         <nav className="hidden md:flex items-center gap-5 text-sm">
           <Link className="transition hover:text-primary" to="/insurances">
-            Страхование
+            Услуги
           </Link>
           <Link className="transition hover:text-primary" to="/reviews">
             Отзывы
